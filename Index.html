@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>aniwatch</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#050505;
+  color:white;
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:1000;
+  background:linear-gradient(to bottom,
+  rgba(0,0,0,0.95),
+  transparent);
+}
+
+.logo{
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:2px;
+
+ color:#ff2e63;
+text-shadow:
+0 0 10px rgba(255,46,99,0.8),
+0 0 20px rgba(255,46,99,0.6),
+0 0 40px rgba(255,46,99,0.5);
+
+  text-shadow:
+  0 0 10px rgba(255,46,99,0.8),
+
+  0 0 40px rgba(255,46,99,0.5);
+
+}
+
+.menu{
+  font-size:28px;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  height:80vh;
+  overflow:hidden;
+}
+
+.hero video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+hero img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,
+  #050505 5%,
+  rgba(0,0,0,0.4),
+  rgba(0,0,0,0.2));
+}
+
+.hero-content{
+  position:absolute;
+  bottom:30px;
+  left:20px;
+  right:20px;
+}
+
+.spotlight{
+  color:#cfcfcf;
+  letter-spacing:2px;
+  margin-bottom:10px;
+  font-size:9px;
+}
+
+.hero-title{
+  font-size:30px;
+  font-weight:500;
+  line-height:1.2;
+  margin-bottom:16px;
+  color:#ecedcc;
+}
+
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  color:#d8d8d8;
+  font-size:14px;
+  margin-bottom:18px;
+}
+
+.description{
+  color:#bdbdbd;
+  line-height:1.7;
+  margin-bottom:25px;
+  max-width:700px;
+}
+
+.buttons{
+  display:flex;
+  gap:12px;
+}
+
+.watch-btn{
+  background:#11a4ed;
+  color:white;
+  padding:15px 28px;
+  border-radius:16px;
+  border:none;
+  font-weight:600;
+  font-size:16px;
+  box-shadow:0 0 30pxrgba(144,225,255,0.5)));
+}
+
+.detail-btn{
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  color:white;
+  padding:15px 28px;
+  border-radius:16px;
+  border:none;
+  font-weight:600;
+  font-size:16px;
+}
+
+/* SHARE */
+
+.share{
+  margin:20px;
+  background:#0f0f0f;
+  border-radius:24px;
+  padding:20px;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.share h2{
+  margin-bottom:8px;
+}
+
+.share-buttons{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+
+.share-buttons div{
+  flex:1;
+  padding:14px;
+  text-align:center;
+  border-radius:14px;
+  font-weight:600;
+}
+
+.telegram{
+  background:#0088cc;
+}
+
+.whatsapp{
+  background:#25D366;
+}
+
+.facebook{
+  background:#3b5998;
+}
+
+/* SECTION */
+
+.section{
+  padding:25px 18px;
+}
+
+.section-title{
+  font-size:20px;
+  font-weight:700;
+  margin-bottom:20px;
+  position:relative;
+}
+
+.section-title::before{
+  content:"";
+  position:absolute;
+  left:-10px;
+  top:10px;
+  width:2px;
+  height:18px;
+  border-radius:20px;
+  background:#ff003c;
+  box-shadow:0 0 25px red;
+}
+
+.anime-grid{
+  display:flex;
+  overflow-x:auto;
+  gap:20px;
+  padding-bottom:10px;
+  scroll-behavior:smooth;
+}
+
+.anime-grid::-webkit-scrollbar{
+  display:none;
+}
+
+/* CARD */
+
+.card{
+  position:relative;
+  border-radius:22px;
+  overflow:hidden;
+  background:#111;
+  transition:0.3s;
+  border:1px solid rgba(255,255,255,0.05);
+  min-width:170px;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.card-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,
+  rgba(0,0,0,0.95),
+  rgba(0,0,0,0.1));
+}
+
+.card-info{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  padding:15px;
+}
+
+.card-title{
+  font-size:17px;
+  font-weight:600;
+  margin-bottom:8px;
+  line-height:1.4;
+}
+
+.card-meta{
+  color:#d0d0d0;
+  font-size:13px;
+  margin-top:4px;
+}
+
+/* PLAY BUTTON */
+
+.play{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:rgba(255,0,60,0.2);
+  backdrop-filter:blur(10px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:26px;
+  box-shadow:0 0 30px rgba(255,255,255,0.5);
+  display:none;
+}
+
+/* LOADING */
+
+.loading{
+  text-align:center;
+  padding:50px;
+  color:#999;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:rgba(0,0,0,0.95);
+  backdrop-filter:blur(10px);
+  display:flex;
+  justify-content:space-around;
+  padding:9px 0;
+  border-top:1px solid rgba(255,255,255,0.05);
+  z-index:999;
+}
+
+.nav-item{
+  text-align:center;
+  color:#d0d0d0;
+  font-size:13px;
+  cursor:pointer;
+z-index:10000;
+position:relative;
+}
+
+.nav-icon{
+  font-size:24px;
+  margin-bottom:5px;
+}
+
+.active{
+  color:#ff003c;
+
+}
+
+.space{
+  height:120px;
+}
+
+.search-popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:20px;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(20px);
+  z-index:99999;
+  display:none;
+}
+
+.search-popup input{
+  width:100%;
+  padding:18px;
+  border:none;
+  outline:none;
+  border-radius:20px;
+  background:rgba(255,255,255,0.08);
+  color:white;
+  font-size:18px;
+}
+
+.search-popup input{
+  width:100%;
+  padding:14px;
+  border:none;
+  outline:none;
+  border-radius:14px;
+  background:#1b1b1b;
+  color:white;
+  font-size:16px;
+}
+.slides{
+  position:relative;
+  width:100%;
+  height:100%;
+}
+
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  opacity:0;
+  transition:1s;
+}
+
+.slide.active{
+  opacity:1;
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero img{
+  animation:zoomHero 6s ease forwards;
+}
+
+.hero-content{
+  animation:slideUp 1.2s ease;
+}
+
+.card{
+  animation:fadeUp 1s ease;
+}
+
+@keyframes slideUp{
+
+  from{
+    opacity:0;
+    transform:translateY(60px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+@keyframes zoomHero{
+
+  from{
+    transform:scale(1.15);
+  }
+
+  to{
+    transform:scale(1);
+  }
+
+}
+
+.search-box{
+  display:flex;
+  gap:10px;
+}
+
+.search-box button{
+  width:60px;
+  border:none;
+  border-radius:18px;
+  background:transparent;
+  color:#4da6ff;
+  font-size:20px;
+  text-shadow:
+  0 0 20px #4da6ff,
+  0 0 40px #4da6ff,
+  0 0 80px #4da6ff,
+  0 0 120px #4da6ff,
+  0 0 160px #4da6ff;
+}
+
+.left-profile img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  object-fit:cover;
+  border:1.5px solid rgba(255,255,255,0.15);
+}
+
+.top-search{
+  font-size:26px;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  
+  color:#4da6ff;
+
+  text-shadow:
+  0 0 20px #4da6ff,
+  0 0 40px #4da6ff,
+  0 0 80px #4da6ff,
+  0 0 120px #4da6ff,
+  0 0 160px #4da6ff;
+}
+}
+
+</style>
+
+</head>
+<script>
+
+function toggleSearch(){
+
+  const popup =
+  document.getElementById("searchPopup");
+
+  const input =
+  document.getElementById("searchInput");
+
+  popup.style.display = "block";
+
+  setTimeout(() => {
+
+    input.focus();
+
+  },100);
+
+}
+
+/* ENTER = KEYBOARD HIDE */
+
+function closeSearch(event){
+
+  if(event.key === "Enter"){
+
+    document.activeElement.blur();
+
+  }
+
+}
+
+/* CARD CLICK = POPUP HIDE */
+
+document.addEventListener("click", function(e){
+
+  if(e.target.closest(".card")){
+
+    document.getElementById("searchPopup")
+    .style.display = "none";
+
+  }
+
+});
+function searchNow(){
+
+  document.activeElement.blur();
+
+}
+
+</script>
+<body>
+
+<!-- NAVBAR -->
+
+
+    
+  <div class="navbar">
+
+  <div class="left-profile">
+
+    <img src="https://raw.githubusercontent.com/sahebff667/Paradianimex-site/main/b1468821e3f28d709b06344d72f5add0%20(1).jpg">
+
+  </div>
+
+  <div class="logo">
+    ANIx
+  </div>
+
+  <div onclick="toggleSearch()"
+  class="top-search">
+
+    <i class="fa-solid fa-magnifying-glass"></i>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+  <div class="slides">
+
+    <!-- Slide 1 -->
+
+    <div class="slide active">
+
+     <video autoplay muted loop playsinline>
+    <source src="hero-yourname.mp4" type="video/mp4">
+  </video>
+
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+
+        <div class="spotlight">
+          #1 Spotlight
+        </div>
+
+        <div class="hero-title">
+          Your name 
+        </div>
+        <div class="description">
+  After the Demon King is defeated, the elf mage Frieren begins a new journey to understand people, emotions
+</div>
+<div class="buttons">
+
+<button class="watch-btn"
+onclick="window.location.href='player.html?anime=yourname'">
+
+<i class="fa-solid fa-play"></i>
+
+Watch
+
+</button>
+  
+
+  <button class="detail-btn">
+    <i class="fa-solid fa-bookmark"></i>
+    Save
+  </button>
+
+</div>
+
+      </div>
+
+    </div>
+
+    <!-- Slide 2 -->
+
+    <div class="slide">
+
+     <video autoplay muted loop playsinline>
+    <source src="hero-aot.mp4" type="video/mp4">
+  </video>
+
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+
+        <div class="spotlight">
+          #2 Trending
+        </div>
+
+        <div class="hero-title">
+          Attack On Titan
+        </div>
+       <div class="description">a dark fantasy anime and manga series where humanity fights for survival
+      </div>
+      <div class="buttons">
+
+  <button class="watch-btn">
+    <i class="fa-solid fa-play"></i>
+    Watch
+  </button>
+
+  <button class="detail-btn">
+    <i class="fa-solid fa-bookmark"></i>
+    Save
+  </button>
+
+</div>
+      
+      </div>
+
+    </div>
+
+    <!-- Slide 3 -->
+
+    <div class="slide">
+
+       <video autoplay muted loop playsinline>
+    <source src="hero- jjk.mp4" type="video/mp4">
+  </video>
+  
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+
+        <div class="spotlight">
+          #3 Popular
+        </div>
+
+        <div class="hero-title">
+          Jujutsu Kaisen
+        </div>
+       <div class="description">a dark fantasy anime and manga series where negative human emotions generate "Cursed Spirits </div>
+       <div class="buttons">
+
+  <button class="watch-btn">
+    <i class="fa-solid fa-play"></i>
+    Watch
+  </button>
+
+  <button class="detail-btn">
+    <i class="fa-solid fa-bookmark"></i>
+    Save
+  </button>
+
+</div>
+      </div>
+<div class="buttons">
+
+  <button class="watch-btn">
+    <i class="fa-solid fa-play"></i>
+    Watch
+  </button>
+
+  <button class="detail-btn">
+    <i class="fa-solid fa-bookmark"></i>
+    Save
+  </button>
+
+</div>
+    </div>
+        <!-- Slide 4 -->
+
+    <div class="slide">
+
+      <video autoplay muted loop playsinline>
+    <source src="hero-vinand.mp4" type="video/mp4">
+  </video>
+
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+
+        <div class="spotlight">
+          #3 Popular
+        </div>
+
+        <div class="hero-title">
+         Vinland saga
+        </div>
+       <div class="description"> a critically acclaimed historical epic that follows Thorfinn, a young Viking who descends into a bitter quest for revenge after his father's murder </div>
+       <div class="buttons">
+
+  <button class="watch-btn">
+    <i class="fa-solid fa-play"></i>
+    Watch
+  </button>
+
+  <button class="detail-btn">
+    <i class="fa-solid fa-bookmark"></i>
+    Save
+  </button>
+
+</div>
+      </div>
+<div class="buttons">
+
+  <button class="watch-btn">
+    <i class="fa-solid fa-play"></i>
+    Watch
+  </button>
+
+  <button class="detail-btn">
+    <i class="fa-solid fa-bookmark"></i>
+    Save
+  </button>
+
+</div>
+    </div>
+        <!-- Slide 5 -->
+
+    <div class="slide">
+
+      <video autoplay muted loop playsinline>
+    <source src="hero-suzume.mp4" type="video/mp4">
+  </video>
+
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+
+        <div class="spotlight">
+          #3 Popular
+        </div>
+
+        <div class="hero-title">
+          suzume 
+        </div>
+       <div class="description"> a 2022 Japanese animated fantasy-adventure film written and directed by Makoto Shinkai </div>
+       <div class="buttons">
+
+  <button class="watch-btn">
+    <i class="fa-solid fa-play"></i>
+    Watch
+  </button>
+
+  <button class="detail-btn">
+    <i class="fa-solid fa-bookmark"></i>
+    Save
+  </button>
+
+</div>
+      </div>
+<div class="buttons">
+
+  <button class="watch-btn">
+    <i class="fa-solid fa-play"></i>
+    Watch
+  </button>
+
+  <button class="detail-btn">
+    <i class="fa-solid fa-bookmark"></i>
+    Save
+  </button>
+
+</div>
+    </div>
+
+    <!-- Slide 4 -->
+
+    <div class="slide">
+
+      <video autoplay muted loop playsinline>
+    <source src="hero-demon.mp4" type="video/mp4">
+  </video>
+
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+
+        <div class="spotlight">
+          #4 Action
+        </div>
+
+        <div class="hero-title">
+          Demon Slayer
+        </div>
+       <div class="description">A family is attacked by demons and only two members survive - Tanjiro and his sister Nezuko, </div>
+       
+       <div class="buttons">
+
+  <button class="watch-btn">
+    <i class="fa-solid fa-play"></i>
+    Watch
+  </button>
+
+  <button class="detail-btn">
+    <i class="fa-solid fa-bookmark"></i>
+    Save
+  </button>
+
+</div>
+       
+       
+      </div>
+      
+
+    </div>
+
+    <!-- Slide 5 -->
+
+    <div class="slide">
+
+      <video autoplay muted loop playsinline>
+    <source src="hero-chainsaw.mp4" type="video/mp4">
+  </video>
+
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+
+        <div class="spotlight">
+          #5 Fantasy
+        </div>
+
+        <div class="hero-title">
+          Chainsaw Man
+        </div>
+        <div class="description">Following a betrayal, a young man left for dead is reborn as a powerful devil-human  </div>
+        <div class="buttons">
+
+<a href="player.html" class="watch-btn">
+   Watch
+</a>
+    Watch
+  </button>
+
+  <button class="detail-btn">
+    <i class="fa-solid fa-bookmark"></i>
+    Save
+  </button>
+
+</div>
+      
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+</div>
+
+<!-- ANIME SECTION -->
+
+<div class="section">
+
+  <div class="section-title">
+    Trending Anime
+  </div>
+
+  <div class="anime-grid"
+  id="animeGrid">
+
+    <div class="loading">
+      Loading Anime...
+    </div>
+
+  </div>
+
+</div>
+<div class="section">
+
+  <div class="section-title">
+    Popular In India
+  </div>
+
+  <div class="anime-grid">
+
+    <!-- 1 -->
+
+    <div class="card">
+
+      <img src="https://cdn.myanimelist.net/images/anime/1000/110531.jpg">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">▶</div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          Attack On Titan
+        </div>
+
+        <div class="card-meta">
+          ⭐ 9.1
+        </div>
+
+        <div class="card-meta">
+          📺 94 Episodes
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 2 -->
+
+    <div class="card">
+
+      <img src="https://cdn.myanimelist.net/images/anime/1286/99889.jpg">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">▶</div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          Demon Slayer
+        </div>
+
+        <div class="card-meta">
+          ⭐ 8.8
+        </div>
+
+        <div class="card-meta">
+          📺 55 Episodes
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 3 -->
+
+    <div class="card">
+
+      <img src="https://cdn.myanimelist.net/images/anime/1171/109222.jpg">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">▶</div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          Jujutsu Kaisen
+        </div>
+
+        <div class="card-meta">
+          ⭐ 8.7
+        </div>
+
+        <div class="card-meta">
+          📺 47 Episodes
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 4 -->
+
+    <div class="card">
+
+      <img src="https://cdn.myanimelist.net/images/anime/1935/127974.jpg">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">▶</div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          Chainsaw Man
+        </div>
+
+        <div class="card-meta">
+          ⭐ 8.5
+        </div>
+
+        <div class="card-meta">
+          📺 12 Episodes
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 5 -->
+
+    <div class="card">
+
+      <img src="https://cdn.myanimelist.net/images/anime/13/17405.jpg">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">▶</div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          Naruto
+        </div>
+
+        <div class="card-meta">
+          ⭐ 8.4
+        </div>
+
+        <div class="card-meta">
+          📺 220 Episodes
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 6 -->
+
+    <div class="card">
+
+      <img src="https://cdn.myanimelist.net/images/anime/1565/111305.jpg">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">▶</div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          One Piece
+        </div>
+
+        <div class="card-meta">
+          ⭐ 9.0
+        </div>
+
+        <div class="card-meta">
+          📺 1100+ Episodes
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 7 -->
+
+    <div class="card">
+
+      <img src="https://cdn.myanimelist.net/images/anime/10/78745.jpg">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">▶</div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          One Punch Man
+        </div>
+
+        <div class="card-meta">
+          ⭐ 8.7
+        </div>
+
+        <div class="card-meta">
+          📺 24 Episodes
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 8 -->
+
+    <div class="card">
+
+      <img src="https://cdn.myanimelist.net/images/anime/1908/135431.jpg">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">▶</div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          Solo Leveling
+        </div>
+
+        <div class="card-meta">
+          ⭐ 8.9
+        </div>
+
+        <div class="card-meta">
+          📺 25 Episodes
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 9 -->
+
+    <div class="card">
+
+      <img src="https://cdn.myanimelist.net/images/anime/5/73199.jpg">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">▶</div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          Death Note
+        </div>
+
+        <div class="card-meta">
+          ⭐ 9.0
+        </div>
+
+        <div class="card-meta">
+          📺 37 Episodes
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 10 -->
+
+    <div class="card">
+
+      <img src="https://cdn.myanimelist.net/images/anime/1985/117815.jpg">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">▶</div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          Spy x Family
+        </div>
+
+        <div class="card-meta">
+          ⭐ 8.6
+        </div>
+
+        <div class="card-meta">
+          📺 37 Episodes
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="search-popup" id="searchPopup">
+
+  <div class="search-box">
+
+<input
+type="search"
+name="anime-search-xyz"
+id="searchInput"
+placeholder="Search anime..."
+onkeydown="closeSearch(event)"
+inputmode="search"
+autocomplete="new-password"
+autocorrect="off"
+autocapitalize="off"
+spellcheck="false"
+autofocus>
+
+    <button onclick="searchNow()">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      
+  
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
+
+<div class="bottom-nav">
+
+  <div class="nav-item active"
+id="homeBtn"
+onclick="goHome()">
+    
+
+    <div class="nav-icon">
+    <i class="fa-solid fa-house"></i>
+    </div>
+
+    Back
+
+  </div>
+
+  <div class="nav-item"
+id="searchBtn"
+onclick="toggleSearch()">
+    
+    <div class="nav-icon">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+
+    Search
+
+  </div>
+
+  <div class="nav-item">
+
+    <div class="nav-icon">
+      <i class="fa-solid fa-bookmark"></i>
+    </div>
+
+    Played
+
+  </div>
+
+  <div class="nav-item">
+
+    <div class="nav-icon">
+      
+      <i class="fa-solid fa-user"></i>
+    </div>
+
+    Account
+
+  </div>
+
+</div>
+
+
+
+<!-- API SCRIPT -->
+
+<script>
+
+const animeGrid =
+document.getElementById("animeGrid");
+
+fetch("https://api.jikan.moe/v4/top/anime")
+
+.then(response => response.json())
+
+.then(data => {
+
+  animeGrid.innerHTML = "";
+
+  data.data.slice(0,200).forEach(anime => {
+
+    animeGrid.innerHTML += `
+
+    <div class="card">
+
+      <img src="${anime.images.jpg.image_url}">
+
+      <div class="card-overlay"></div>
+
+      <div class="play">
+        ▶
+      </div>
+
+      <div class="card-info">
+
+        <div class="card-title">
+          ${anime.title}
+        </div>
+
+        <div class="card-meta">
+          ⭐ ${anime.score || "N/A"}
+        </div>
+
+        <div class="card-meta">
+          📺 ${anime.episodes || "?"} Episodes
+        </div>
+
+        <div class="card-meta">
+          🎬 ${anime.type || "Anime"}
+        </div>
+
+
+      </div>
+
+    </div>
+
+    `;
+
+  });
+
+});
+
+</script>
+
+<!-- SHARE -->
+
+<div class="share">
+
+  <h2>Share ANIVERSE</h2>
+
+  <p>Share with your friends</p>
+
+  <div class="share-buttons">
+
+    <div class="telegram">
+      Telegram
+    </div>
+
+    <div class="whatsapp">
+      WhatsApp
+    </div>
+
+    <div class="facebook">
+      Facebook
+    </div>
+
+<script>
+
+let slides =
+document.querySelectorAll(".slide");
+
+let current = 0;
+
+setInterval(() => {
+
+  slides[current]
+  .classList.remove("active");
+
+  let randomIndex =
+  Math.floor(Math.random()
+  * slides.length);
+
+  while(randomIndex === current){
+
+    randomIndex =
+    Math.floor(Math.random()
+    * slides.length);
+
+  }
+
+  current = randomIndex;
+
+  slides[current]
+  .classList.add("active");
+
+}, 10000);
+
+</script>
+
+
+<script>
+
+let slides =
+document.querySelectorAll(".slide");
+
+let current = 0;
+
+setInterval(() => {
+
+  slides[current]
+  .classList.remove("active");
+
+  let randomIndex =
+  Math.floor(Math.random()
+  * slides.length);
+
+  while(randomIndex === current){
+
+    randomIndex =
+    Math.floor(Math.random()
+    * slides.length);
+
+  }
+
+  current = randomIndex;
+
+  slides[current]
+  .classList.add("active");
+
+}, 4000);
+
+</script>
+<script>
+
+function toggleSearch(){
+
+  const popup =
+  document.getElementById("searchPopup");
+
+  const input =
+  document.getElementById("searchInput");
+
+  popup.style.display = "block";
+
+  setTimeout(() => {
+
+    input.focus();
+
+  },100);
+
+  /* ACTIVE SWITCH */
+
+  document
+  .querySelectorAll(".nav-item")
+  .forEach(item => {
+
+    item.classList.remove("active");
+
+  });
+
+  document
+  .getElementById("searchBtn")
+  .classList.add("active");
+
+}
+
+/* ENTER = KEYBOARD HIDE */
+
+function closeSearch(event){
+
+  if(event.key === "Enter"){
+
+    document.activeElement.blur();
+
+  }
+
+}
+
+function searchNow(){
+  
+
+  document.activeElement.blur();
+  function goHome(){
+
+  const popup =
+  document.getElementById("searchPopup");
+
+  popup.style.display = "none";
+
+  document.activeElement.blur();
+
+  /* ACTIVE SWITCH */
+
+  document
+  .querySelectorAll(".nav-item")
+  .forEach(item => {
+
+    item.classList.remove("active");
+
+  });
+
+  document
+  .getElementById("homeBtn")
+  .classList.add("active");
+
+}
+  
+  
+  
+  
+
+}
+
+/* CARD CLICK */
+
+document.addEventListener("click", function(e){
+
+  if(e.target.closest(".card")){
+
+    document.getElementById("searchPopup")
+    .style.display = "none";
+
+    document
+    .getElementById("searchBtn")
+    .classList.remove("active");
+
+    document
+    .getElementById("homeBtn")
+    .classList.add("active");
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
+</body>
+</html>
